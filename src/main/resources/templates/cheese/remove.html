@@ -8,9 +8,12 @@
 <h1 th:text="${title}">Default Title</h1>
 
 <form method="post">
-    <input type="text" name="cheeseName" value="Name"/>
-    <input type="text" name="description" value="Description" />
-    <input type="submit" value="Add Cheese" />
+    <div th:each="cheese : ${cheeses}">
+        <input type="checkBox" name="cheeseToDelete" th:value="${cheese.key}"/>
+        <label th:text="${cheese.key}"></label>
+    </div>
+    <input type="submit" value="Remove" />
 </form>
+
 </body>
 </html>
