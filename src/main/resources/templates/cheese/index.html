@@ -10,13 +10,12 @@
 <a href="/cheese/add">Add Cheese</a>
 
 <div th:each="cheese : ${cheeses}">
-    <span th:text="${cheese.key}">Key</span>
-    <span th:text="${cheese.value}">Value</span>
+    <span th:text="${cheese.getCheeseName()}">Name</span>
+    <span> - </span>
+    <span th:text="${cheese.getCheeseDescription()}">Description</span>
 </div>
 
 <p th:unless="${cheeses} and ${cheeses.size()}">no cheese :(</p>
-
-
 
 </body>
 </html>

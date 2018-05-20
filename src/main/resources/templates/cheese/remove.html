@@ -9,8 +9,8 @@
 
 <form method="post">
     <div th:each="cheese : ${cheeses}">
-        <input type="checkBox" name="cheeseToDelete" th:value="${cheese.key}"/>
-        <label th:text="${cheese.key}"></label>
+        <input type="checkBox" name="cheesesToDelete" th:value="${cheese.getCheeseName()}"/>
+        <label th:text="${cheese.getCheeseName()}"></label>
     </div>
     <input type="submit" value="Remove" />
 </form>

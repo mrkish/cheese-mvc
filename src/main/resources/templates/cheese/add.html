@@ -8,9 +8,12 @@
 <h1 th:text="${title}">Default Title</h1>
 
 <form method="post">
-    <input type="text" name="cheeseName" value="Name"/>
-    <input type="text" name="description" value="Description" />
+    <label value="Name:"></label>
+    <input type="text" name="cheeseName" value=""/>
+    <label value="Description"></label>
+    <input type="text" name="description" value="" />
     <input type="submit" value="Add Cheese" />
 </form>
+<span th:if="${errors}" th:text="${errors.get(cheeseNameError)}">cheeseNameError</span>
 </body>
 </html>
