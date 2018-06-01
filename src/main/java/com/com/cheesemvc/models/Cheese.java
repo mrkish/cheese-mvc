@@ -5,12 +5,23 @@ public class Cheese {
     private String name;
     private String description;
 
+
+
+    private int cheeseId;
+    private static int nextId = 1;
+
     public Cheese(String name, String description) {
+        this();
         this.name = name;
         this.description = description;
     }
 
-    // Setters
+    public Cheese() {
+        cheeseId = nextId;
+        nextId++;
+    }
+
+    public void setCheeseId(int cheeseId) { this.cheeseId = cheeseId; }
 
     public void setCheeseName(String name) {
         this.name = name;
@@ -20,7 +31,7 @@ public class Cheese {
         this.description = description;
     }
 
-    // Getters
+    public int getCheeseId() { return cheeseId; }
 
     public String getCheeseName() {
         return this.name;
@@ -29,6 +40,5 @@ public class Cheese {
     public String getCheeseDescription() {
         return this.description;
     }
-
 
 }

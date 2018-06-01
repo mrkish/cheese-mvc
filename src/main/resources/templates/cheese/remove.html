@@ -8,11 +8,11 @@
 <h1 th:text="${title}">Default Title</h1>
 
 <form method="post">
-    <div th:each="cheese : ${cheeses}">
-        <input type="checkBox" name="cheesesToDelete" th:value="${cheese.getCheeseName()}"/>
-        <label th:text="${cheese.getCheeseName()}"></label>
+    <div th:each="cheese : ${cheeses}" class="checkbox">
+        <input type="checkbox" name="cheeseIds" th:id="${cheese.cheeseId}" th:value="${cheese.cheeseId}"/>
+        <label th:for="${cheese.cheeseId}" th:text="${cheese.getCheeseName()}"></label>
     </div>
-    <input type="submit" value="Remove" />
+    <input type="submit" value="Remove Cheese" />
 </form>
 
 </body>
