@@ -1,19 +1,22 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://thymeleaf.org/">
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
-<body>
+<body class="container">
+<h1 th:text="${title}">Default Title</h1>
 
 <nav th:replace="fragments :: navigation"></nav>
 
-<h1 th:text="${title}">Default Title</h1>
-
-<form method="post">
-    <label value="Name:"></label>
-    <input type="text" name="cheeseName" value=""/>
-    <label value="Description"></label>
-    <input type="text" name="description" value="" />
+<form method="post" style="max-width:600px;">
+    <div class="form-group">
+        <label for="name-field">Name</label>
+        <input class="form-control" id="name-field" type="text" name="cheeseName" />
+    </div>
+    <div class="form-group">
+        <label for="desc-field">Description</label>
+        <input class="form-control" id="desc-field" type="text" name="cheeseDescription" />
+    </div>
     <input type="submit" value="Add Cheese" />
 </form>
-<span th:if="${errors}" th:text="${errors.get(cheeseNameError)}">cheeseNameError</span>
+
 </body>
 </html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
-<body>
+<body class="container">
 
 <nav th:replace="fragments :: navigation"></nav>
 
@@ -9,11 +9,16 @@
 
 <a href="/cheese/add">Add Cheese</a>
 
-<div th:each="cheese : ${cheeses}">
-    <span th:text="${cheese.getCheeseName()}">Name</span>
-    <span> - </span>
-    <span th:text="${cheese.getCheeseDescription()}">Description</span>
-</div>
+<table class="table">
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+    </tr>
+    <tr th:each="cheese : ${cheeses}">
+        <td th:text="${cheese.getCheeseName()}"></td>
+        <td th:text="${cheese.getCheeseDescription()}"></td>
+    </tr>
+</table>
 
 <p th:unless="${cheeses} and ${cheeses.size()}">no cheese :(</p>
 
