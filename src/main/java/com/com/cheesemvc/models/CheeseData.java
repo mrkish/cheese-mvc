@@ -6,7 +6,6 @@ public class CheeseData {
 
     static ArrayList<Cheese> cheeses = new ArrayList<>();
 
-
     public static ArrayList<Cheese> getAll() {
         return cheeses;
     }
@@ -21,7 +20,6 @@ public class CheeseData {
     }
 
     public static Cheese getById(int id) {
-
         Cheese theCheese = null;
 
         for (Cheese candidateCheese: cheeses) {
