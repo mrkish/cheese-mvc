@@ -2,15 +2,9 @@ package com.com.cheesemvc.controllers;
 
 import com.com.cheesemvc.models.Cheese;
 import com.com.cheesemvc.models.CheeseData;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-
-import java.util.ArrayList;
-import java.util.HashMap;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("cheese")
@@ -55,4 +49,22 @@ public class CheeseController {
         return "redirect:";
     }
 
+
+    @RequestMapping(value="edit/{cheeseId}", method=RequestMethod.GET)
+    public String displayEditForm(Model model, @PathVariable int cheeseId) {
+
+        Cheese getThisCheese = CheeseData.getById(cheeseId);
+        model.addAttribute("cheese", getThisCheese);
+
+        return "cheese/edit";
+    }
+
+    @RequestMapping(value="edit/{cheeseId}", method=RequestMethod.POST)
+    public String processEditForm(@PathVariable int cheeseId, String name, String description) {
+        Cheese cheeseToEdit = CheeseData.getById(cheeseId);
+        cheeseToEdit.setName(name);
+        cheeseToEdit.setDescription((description));
+
+        return "redirect:";
+    }
 }

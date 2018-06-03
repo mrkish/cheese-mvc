@@ -1,10 +1,12 @@
 package com.com.cheesemvc.models;
 
+/**
+ * Created by LaunchCode
+ */
 public class Cheese {
 
     private String name;
     private String description;
-
     private int cheeseId;
     private static int nextId = 1;
 
@@ -19,24 +21,27 @@ public class Cheese {
         nextId++;
     }
 
-    public void setCheeseId(int cheeseId) { this.cheeseId = cheeseId; }
+    public int getCheeseId() {
+        return cheeseId;
+    }
 
-    public void setCheeseName(String name) {
+    public void setCheeseId(int cheeseId) {
+        this.cheeseId = cheeseId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
         this.name = name;
     }
 
-    public void setCheeseDescription(String description) {
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
         this.description = description;
     }
-
-    public int getCheeseId() { return cheeseId; }
-
-    public String getCheeseName() {
-        return this.name;
-    }
-
-    public String getCheeseDescription() {
-        return this.description;
-    }
-
 }
