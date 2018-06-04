@@ -2,7 +2,18 @@
 <html lang="en" xmlns:th="http://thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
 <body class="container">
-<h1>You won!</h1>
+
+<h1>Users</h1>
+<nav th:replace="fragments :: navigation"></nav>
+
+<div>
+    <table th:each="user: ${users}">
+        <tr><td th:text="${user.getUsername()}" >Username</td></tr>
+        <tr><td th:text="${user.getEmail()}" >Email</td></tr>
+        <tr><td th:text="${user.getJoined()}" >Joined</td></tr>
+        <hr/>
+    </table>
+</div>
 
 </body>
 </html>

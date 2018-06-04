@@ -1,5 +1,7 @@
 package com.com.cheesemvc.models;
 
+import java.util.Date;
+
 public class User {
 
     private static int idCounter = 1;
@@ -7,6 +9,7 @@ public class User {
     private String username;
     private String email;
     private String password;
+    private Date joined;
 
     public User(String username, String email, String password) {
         this();
@@ -17,6 +20,7 @@ public class User {
 
     public User() {
         this.userId = idCounter;
+        this.joined = new Date();
         idCounter++;
     }
 
@@ -48,4 +52,11 @@ public class User {
         this.password = password;
     }
 
+    public Date getJoined() {
+        return joined;
+    }
+
+    public void setJoined(Date joined) {
+        this.joined = joined;
+    }
 }
