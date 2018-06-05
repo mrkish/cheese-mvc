@@ -4,9 +4,7 @@ import com.com.cheesemvc.models.User;
 import com.com.cheesemvc.models.UserData;
 import org.springframework.ui.Model;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("user")
@@ -53,6 +51,13 @@ public class UserController {
 
         return "user/index";
 
+    }
+
+    @RequestMapping(value="/{userId}", method=RequestMethod.GET)
+    public String displayUser(Model model, @PathVariable int userId) {
+        model.addAttribute("user", UserData.getById(userId));
+
+        return "user/userpage";
     }
 
 }

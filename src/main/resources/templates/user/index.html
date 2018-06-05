@@ -7,10 +7,10 @@
 <nav th:replace="fragments :: navigation"></nav>
 
 <div>
-    <table th:each="user: ${users}">
-        <tr><td th:text="${user.getUsername()}" >Username</td></tr>
-        <tr><td th:text="${user.getEmail()}" >Email</td></tr>
-        <tr><td th:text="${user.getJoined()}" >Joined</td></tr>
+    <table>
+        <tr th:each="user: ${users}">
+            <td><a th:href="@{'/user/' + ${user.getId()}}" th:text="${user.getUsername()}"></a></td>
+        </tr>
         <hr/>
     </table>
 </div>

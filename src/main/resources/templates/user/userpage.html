@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+
+<span><h1 th:text="${user.getUsername()}">User: Username</h1></span>
+<nav th:replace="fragments :: navigation"></nav>
+
+<div>
+    <table>
+        <tr><td th:text="${user.getUsername()}" >Username</td></tr>
+        <tr><td th:text="${user.getEmail()}" >Email</td></tr>
+        <tr><td th:text="${user.getJoined()}" >Joined</td></tr>
+        <hr/>
+    </table>
+</div>
+
+</body>
+</html>
