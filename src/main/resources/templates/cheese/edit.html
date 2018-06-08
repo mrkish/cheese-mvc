@@ -39,7 +39,7 @@
         <input class="form-control" th:field="*{rating}" />
         <span th:errors="*{rating}" class="error"></span>
     </div>
-    <input type="hidden" th:value="${cheese.cheeseId}" name="cheeseId" />
+    <input type="hidden" th:value="*{cheeseId}" name="cheeseId" />
     <input type="submit" value="Edit Cheese" />
 </form>
 

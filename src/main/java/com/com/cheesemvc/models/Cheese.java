@@ -28,11 +28,10 @@ public class Cheese {
     private int cheeseId;
     private static int nextId = 1;
 
-    public Cheese(String name, String description, int rating) {
+    public Cheese(String name, String description) {
         this();
         this.name = name;
         this.description = description;
-        this.rating = rating;
     }
 
     public Cheese() {

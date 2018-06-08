@@ -9,6 +9,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.sql.SQLOutput;
 
 @Controller
 @RequestMapping("cheese")
@@ -74,8 +75,8 @@ public class CheeseController {
     }
 
     @RequestMapping(value="edit", method=RequestMethod.POST)
-    public String processEditForm(@ModelAttribute @Valid Cheese cheeseGiven, Errors errors,
-                                  String name, String description, CheeseType cheeseType, int rating, Model model) {
+    public String processEditForm(Model model, Errors errors, String name, String description,
+                                  int rating, CheeseType type, int cheeseId) {
 
         if (errors.hasErrors()) {
             model.addAttribute("cheeseTypes", CheeseType.values());
@@ -84,12 +85,12 @@ public class CheeseController {
             return "cheese/edit";
         }
 
-        Cheese cheeseToEdit = CheeseData.getById(cheeseGiven.getCheeseId());
+        Cheese cheeseToEdit = CheeseData.getById(cheeseId);
 
-        cheeseToEdit.setName(cheeseGiven.getName());
-        cheeseToEdit.setDescription((cheeseGiven.getDescription()));
-        cheeseToEdit.setType(cheeseGiven.getType());
-        cheeseToEdit.setRating(cheeseGiven.getRating());
+        cheeseToEdit.setName(name);
+        cheeseToEdit.setDescription(description);
+        cheeseToEdit.setType(type);
+        cheeseToEdit.setRating(rating);
 
         return "redirect:";
     }
