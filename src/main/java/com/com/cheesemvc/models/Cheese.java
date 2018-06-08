@@ -1,5 +1,7 @@
 package com.com.cheesemvc.models;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -16,15 +18,21 @@ public class Cheese {
     @Size(min=1, message = "Description must not be empty")
     private String description;
 
+    @NotNull(message="Must be a value between 1-5.")
+    @Min(1)
+    @Max(5)
+    private int rating;
+
     private CheeseType type;
 
     private int cheeseId;
     private static int nextId = 1;
 
-    public Cheese(String name, String description) {
+    public Cheese(String name, String description, int rating) {
         this();
         this.name = name;
         this.description = description;
+        this.rating = rating;
     }
 
     public Cheese() {
@@ -34,10 +42,6 @@ public class Cheese {
 
     public int getCheeseId() {
         return cheeseId;
-    }
-
-    public void setCheeseId(int cheeseId) {
-        this.cheeseId = cheeseId;
     }
 
     public String getName() {
@@ -57,10 +61,18 @@ public class Cheese {
     }
 
     public CheeseType getType() {
-        return type;
+        return this.type;
     }
 
     public void setType(CheeseType type) {
         this.type = type;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
     }
 }

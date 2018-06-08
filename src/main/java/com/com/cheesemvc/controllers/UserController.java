@@ -4,7 +4,11 @@ import com.com.cheesemvc.models.User;
 import com.com.cheesemvc.models.UserData;
 import org.springframework.ui.Model;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 @Controller
 @RequestMapping("user")
@@ -14,21 +18,27 @@ public class UserController {
     public String add(Model model) {
 
         model.addAttribute("title", "Add User");
+        model.addAttribute(new User());
 
         return "user/add";
     }
 
     @RequestMapping(value="add", method=RequestMethod.POST)
-    public String add(Model model, @ModelAttribute User user, String verify) {
+    public String add(Model model, @Valid @ModelAttribute User user, Errors errors) {
 
-        model.addAttribute("username", user.getUsername());
-        model.addAttribute("email", user.getEmail());
-        model.addAttribute("password", user.getPassword());
-        model.addAttribute("verify", verify);
+//        model.addAttribute("username", user.getUsername());
+//        model.addAttribute("email", user.getEmail());
+//        model.addAttribute("password", user.getPassword());
+//        model.addAttribute("verify", user.getVerifyPassword());
 
-        if (!user.getPassword().equals(verify)) {
-            model.addAttribute("password", "");
-            model.addAttribute("verify", "");
+        if (errors.hasErrors() == true) {
+            model.addAttribute(user);
+            model.addAttribute("errors", errors);
+            return "redirect:";
+        }
+
+        if (!user.getPassword().equals(user.getVerifyPassword())) {
+            user.setPassword("");
             return "redirect:add";
         }
 

@@ -2,26 +2,30 @@
 <html lang="en" xmlns:th="http://thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
 <body class="container">
-<h1 th:text="${title}">Default Title</h1>
+<h1 th:text="*{title}">Default Title</h1>
 
 <nav th:replace="fragments :: navigation"></nav>
 
-<form method="post" style="max-width:600px;">
+<form method="post" style="max-width:600px;" th:object="${user}">
     <div class="form-group">
         <label for="name-field">Username</label>
-        <input class="form-control" id="name-field" type="text" th:value="${username}" name="username" />
+        <input class="form-control" id="name-field" type="text" th:value="*{username}" name="username" />
+        <span th:errors="*{username}" class="error"></span>
     </div>
     <div class="form-group">
         <label for="email-field">Email</label>
-        <input class="form-control" id="email-field" type="email" th:value="${email}" name="email" />
+        <input class="form-control" id="email-field" type="email" th:value="*{email}" name="email" />
+        <span th:errors="*{email}" class="error"></span>
     </div>
     <div class="form-group">
         <label for="password-field">Password</label>
-        <input class="form-control" id="password-field" th:value="${password}" type="password" name="password" />
+        <input class="form-control" id="password-field" th:value="*{password}" type="password" name="password" />
+        <span th:errors="*{password}" class="error"></span>
     </div>
     <div class="form-group">
         <label for="verify-password-field">Verify Password</label>
-        <input class="form-control" id="verify-password-field" th:value="${verify}" type="password" name="verify" />
+        <input class="form-control" id="verify-password-field" th:value="*{verifyPassword}" type="password" name="verify" />
+        <span th:errors="*{verifyPassword}" class="error"></span>
     </div>
     <input type="submit" value="Add User" />
 </form>
